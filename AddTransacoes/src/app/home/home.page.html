@@ -1,20 +1,86 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<body>
+  <ion-content [fullscreen]="true">
+      <ion-toolbar color=primary>
+        <ion-buttons slot="start">
+          <ion-menu-button auto-hide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="primary">
+          <ion-button>
+            <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+          </ion-button>
+        </ion-buttons>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+        <ion-title>Planejador de despesas</ion-title>
+
     </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card color="light">
+            <ion-card-header>
+              <ion-card-title>Nova Despesa</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item color="light">
+                <ion-label position="floating">Despesa</ion-label>
+                <ion-input type="text" id="DescDespesa"></ion-input>
+              </ion-item>
+              <ion-item color="light">
+                <ion-label position="floating">Valor</ion-label>
+                <ion-input type="number" id="ValorDespesa"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Tipo de despesa</ion-label>
+                <ion-select
+                  [(ngModel)]="inputType"
+                  value="notifications"
+                  interface="action-sheet"
+                >
+                  //NGModel faz o link entre a escolha do select com o
+                  inputtype*//
+                  <ion-select-option value="fix">Fixa</ion-select-option>
+                  //Value é atribuído ao inputType
+                  <ion-select-option value="v ar">Variável</ion-select-option>
+                  //Value é atribuído ao inputType
+                </ion-select>
+              </ion-item>
+
+              <div margin-vertical text-right>
+                <ion-button size="medium" fill="solid" id="BotaoAdd"
+                  >Add</ion-button
+                >
+                <ion-button
+                  size="medium"
+                  fill="outline"
+                  color="danger"
+                  id="BotaoCancel"
+                >
+                  <ion-icon slot="start" name="close"> </ion-icon>
+                  Cancel</ion-button
+                >
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Contas fixas</ion-label>
+      </ion-item-divider>
+      <ion-list>
+        <ion-label> Aluguel R$1300,00 </ion-label>
+      </ion-list>
+
+      <ion-item-divider>
+        <ion-label>Contas variáveis</ion-label>
+      </ion-item-divider>
+      <ion-list>
+        <ion-label> Combustível R$800,00 </ion-label>
+      </ion-list>
+    </ion-item-group>
+  </ion-content>
+</body>
