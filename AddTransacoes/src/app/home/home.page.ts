@@ -7,6 +7,17 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public BotaoAdd(){
+
+    console.log("FUNCIONOU")
+  }
+
+  public BotaoCancel(){
+
+    console.log("FUNCIONOU")
+  }
+
 
 }
+
+

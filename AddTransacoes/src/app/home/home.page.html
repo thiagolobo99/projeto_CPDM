@@ -42,24 +42,24 @@
                   inputtype*//
                   <ion-select-option value="fix">Fixa</ion-select-option>
                   //Value é atribuído ao inputType
-                  <ion-select-option value="v ar">Variável</ion-select-option>
+                  <ion-select-option value="var">Variável</ion-select-option>
                   //Value é atribuído ao inputType
                 </ion-select>
               </ion-item>
 
               <div margin-vertical text-right>
-                <ion-button size="medium" fill="solid" id="BotaoAdd"
-                  >Add</ion-button
-                >
-                <ion-button
-                  size="medium"
+                <ion-button (click)="BotaoAdd()"
+                size="medium" fill="solid" >
+                 Add
+                </ion-button>
+
+                <ion-button (click)="BotaoCancel()"
+                   size="medium"
                   fill="outline"
                   color="danger"
-                  id="BotaoCancel"
                 >
                   <ion-icon slot="start" name="close"> </ion-icon>
-                  Cancel</ion-button
-                >
+                  Cancel</ion-button>
               </div>
             </ion-card-content>
           </ion-card>
