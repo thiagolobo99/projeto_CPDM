@@ -35,15 +35,13 @@
 
               <ion-item>
                 <ion-label>Tipo de despesa</ion-label>
-                <ion-select interface="action-sheet"
-                >
-                  //NGModel faz o link entre a escolha do select com o
-                  inputtype*//
+
+                <ion-select interface="action-sheet" [(ngModel)]="selectedValueDespDesc">
                   <ion-select-option value="fix">Fixa</ion-select-option>
-                  //Value é atribuído ao inputType
                   <ion-select-option value="var">Variável</ion-select-option>
-                  //Value é atribuído ao inputType
+
                 </ion-select>
+
 
               </ion-item>
 
@@ -68,11 +66,12 @@
     </ion-grid>
 
     <ion-item-group>
-      <ion-item-divider>
+      <ion-item-divider >
         <ion-label>Contas fixas</ion-label>
       </ion-item-divider>
-      <ion-list>
-        <ion-item *ngFor="let transaction of transactions">
+
+      <ion-list >
+        <ion-item *ngFor="let transaction of transactionsFix">
           <ion-label>
             <h1>{{transaction.typeDesp}}</h1>
             <h2>{{transaction.amount | currency}}</h2>
@@ -81,11 +80,14 @@
         </ion-item>
       </ion-list>
 
-      <ion-item-divider>
+
+
+      <ion-item-divider >
         <ion-label>Contas variáveis</ion-label>
       </ion-item-divider>
+
       <ion-list>
-        <ion-item *ngFor="let transaction of transactions">
+        <ion-item *ngFor="let transaction of transactionsVar">
           <ion-label>
             <h1>{{transaction.typeDesp}}</h1>
             <h2>{{transaction.amount | currency}}</h2>
