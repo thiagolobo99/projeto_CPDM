@@ -1,20 +1,97 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-item>
+        <ion-select value="03">
+          <ion-select-option value="01">Janeiro</ion-select-option>
+          <ion-select-option value="02">Fevereiro</ion-select-option>
+          <ion-select-option value="03">Março</ion-select-option>
+          <ion-select-option value="04">Abril</ion-select-option>
+          <ion-select-option value="05">Maio</ion-select-option>
+          <ion-select-option value="06">Junho</ion-select-option>
+        </ion-select>
+      </ion-item>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item class="saldoEmContas">
+          <ion-label position="stacked" color="primary">Saldo em contas:</ion-label>
+          <ion-input readonly>R$ 300,00</ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="saldoReceita">
+          <ion-icon name="trending-up-outline" color="success"></ion-icon>
+          <ion-input readonly color="success">R$ 600,00</ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="trending-down-outline" color="danger"></ion-icon>
+          <ion-input readonly color="danger">R$ 300,00</ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-list>
+    <ion-list-header>
+      Ações
+    </ion-list-header>
+    <ion-item>
+      <ion-label>WEGE3</ion-label>
+      <ion-note slot="end">48</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>ITSA3</ion-label>
+      <ion-note slot="end">34</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>MGLU3</ion-label>
+      <ion-note slot="end">12</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>FLRY3</ion-label>
+      <ion-note slot="end">8</ion-note>
+    </ion-item>
+  </ion-list>
+
+
+
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="dashboard">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Dashboard</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="dashboard">
+        <ion-icon name="trending-up-outline"></ion-icon>
+        <ion-label>Receita</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="dashboard">
+        <ion-icon name="trending-down-outline"></ion-icon>
+        <ion-label>Despesa</ion-label>
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="investimentos">
+        <ion-icon name="logo-usd"></ion-icon>
+        <ion-label>Investimentos</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+
 </ion-content>
