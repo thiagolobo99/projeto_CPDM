@@ -15,18 +15,33 @@ export class HomePage {
   public counter = 0;
   public selectedValue = 0;
   public selectedValueDesp ='';
-  public transactions: Transaction[] = [];
+  public transactionsFix: Transaction[] = [];
+  public transactionsVar: Transaction[] = [];
+  public selectedValueDespDesc = '';
   counterDesp: string;
 
   public addDespesa() {
+
+    if(this.selectedValueDespDesc == 'fix'){
     this.counter += this.selectedValue;
     this.counterDesp += this.selectedValueDesp;
-    this.transactions.unshift({
+    this.transactionsFix.unshift({
       typeDesp: this.selectedValueDesp,
       amount: this.selectedValue,
       date: new Date(),
     });
-    this.selectedValue = 0;
+    this.selectedValue = 0;}
+    else if(this.selectedValueDespDesc == 'var'){
+      this.counter += this.selectedValue;
+    this.counterDesp += this.selectedValueDesp;
+    this.transactionsVar.unshift({
+      typeDesp: this.selectedValueDesp,
+      amount: this.selectedValue,
+      date: new Date(),
+    });
+
+
+    }
   }
 
   public BotaoAdd(){
