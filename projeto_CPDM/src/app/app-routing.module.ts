@@ -8,9 +8,17 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'carteira-acoes',
     pathMatch: 'full'
   },
+  {
+    path: 'carteira-acoes',
+    loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
+  },
+  // {
+  //   path: 'popover/:carteiraComprada', loadChildren: './popover/popover.component.html'
+  // }
+
 ];
 
 @NgModule({
