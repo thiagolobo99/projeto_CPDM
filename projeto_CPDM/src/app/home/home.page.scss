@@ -1,28 +1,29 @@
-/* Set the width to the full container and center the content */
-* {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-ion-select {
-  width: 100%;
-  justify-content: center;
-}
-
-/* Set the flex in order to size the text width to its content */
-ion-select::part(placeholder),
-ion-select::part(text) {
-  flex: 0 0 auto;
-}
-
 .saldoEmContas {
-  ion-label{
+  ion-label {
     font-size: 12px;
-    color: white;
+  }
+}
+
+.sc-ion-input-ios-h {
+  font-size: larger;
+}
+
+.acoes {
+  ion-list-header {
+    font-size: larger;
   }
 
+  ion-label,
+  ion-note {
+    font-size: 16px;
+  }
 }
 
-.sc-ion-input-ios-h{
-  font-size: larger;
-  width: 100%;
+.saldo,
+.quantidadeDespesa,
+.quantidadeReceita {
+  ion-note {
+    margin-top: 6px;
+    font-size: large;
+  }
 }

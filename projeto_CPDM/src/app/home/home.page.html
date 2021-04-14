@@ -1,70 +1,97 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-item>
-        <ion-select value="03">
-          <ion-select-option value="01">Janeiro</ion-select-option>
-          <ion-select-option value="02">Fevereiro</ion-select-option>
-          <ion-select-option value="03">Março</ion-select-option>
-          <ion-select-option value="04">Abril</ion-select-option>
-          <ion-select-option value="05">Maio</ion-select-option>
-          <ion-select-option value="06">Junho</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-grid>
+
     <ion-row>
+
       <ion-col>
-        <ion-item class="saldoEmContas">
-          <ion-label position="stacked" color="primary">Saldo em contas:</ion-label>
-          <ion-input readonly>R$ 300,00</ion-input>
+
+        <ion-item class="saldo">
+
+          <ion-label position="stacked">Saldo em contas:</ion-label>
+          <ion-note color="primary">R$ 3000,00</ion-note>
+
         </ion-item>
+
       </ion-col>
+
     </ion-row>
+
     <ion-row>
-      <ion-col>
-        <ion-item class="saldoReceita">
-          <ion-icon name="trending-up-outline" color="success"></ion-icon>
-          <ion-input readonly color="success">R$ 600,00</ion-input>
+
+      <ion-col size="6">
+
+        <ion-item class="quantidadeReceita">
+
+          <ion-label position="stacked">Receita:</ion-label>
+          <ion-note color="success">R$ 600,00</ion-note>
+
         </ion-item>
+
       </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-icon name="trending-down-outline" color="danger"></ion-icon>
-          <ion-input readonly color="danger">R$ 300,00</ion-input>
+
+      <ion-col size="6">
+
+        <ion-item class="quantidadeDespesa">
+
+          <ion-label position="stacked">Despesa:</ion-label>
+          <ion-note color="danger">R$ 300,00</ion-note>
+
         </ion-item>
+
       </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col class="acoes">
+
+        <ion-list>
+
+          <ion-list-header>Ações</ion-list-header>
+
+          <ion-item>
+
+            <ion-label>WEGE3</ion-label>
+            <ion-note slot="end">650,00</ion-note>
+
+          </ion-item>
+
+          <ion-item>
+
+            <ion-label>ITSA3</ion-label>
+            <ion-note slot="end">247,21</ion-note>
+
+          </ion-item>
+
+          <ion-item>
+
+            <ion-label>MGLU3</ion-label>
+            <ion-note slot="end">230,15</ion-note>
+
+          </ion-item>
+
+          <ion-item>
+
+            <ion-label>FLRY3</ion-label>
+            <ion-note slot="end">156,00</ion-note>
+
+          </ion-item>
+
+          <ion-item>
+
+            <ion-label>TAEE3</ion-label>
+            <ion-note slot="end">136,00</ion-note>
+
+          </ion-item>
+
+        </ion-list>
+
+      </ion-col>
+
     </ion-row>
 
   </ion-grid>
-
-  <ion-list>
-    <ion-list-header>
-      Ações
-    </ion-list-header>
-    <ion-item>
-      <ion-label>WEGE3</ion-label>
-      <ion-note slot="end">48</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>ITSA3</ion-label>
-      <ion-note slot="end">34</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>MGLU3</ion-label>
-      <ion-note slot="end">12</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>FLRY3</ion-label>
-      <ion-note slot="end">8</ion-note>
-    </ion-item>
-  </ion-list>
-
 
 
 
