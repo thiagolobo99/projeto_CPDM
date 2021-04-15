@@ -1,9 +1,3 @@
-.saldoEmContas {
-  ion-label {
-    font-size: 12px;
-  }
-}
-
 .sc-ion-input-ios-h {
   font-size: larger;
 }
@@ -23,7 +17,9 @@
 .quantidadeDespesa,
 .quantidadeReceita {
   ion-note {
-    margin-top: 6px;
-    font-size: large;
+    font-size: small;
+  }
+  ion-label {
+    font-size: small;
   }
 }
