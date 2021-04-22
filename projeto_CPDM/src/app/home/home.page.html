@@ -8,7 +8,7 @@
         <ion-item class="saldo">
 
           <ion-label position="stacked">Saldo em contas:</ion-label>
-          <ion-note color="primary"> R$ 1000,00</ion-note>
+          <ion-note color="primary">{{this.saldo.toFixed(2)}}</ion-note>
 
         </ion-item>
 
@@ -23,7 +23,7 @@
         <ion-item class="quantidadeReceita">
 
           <ion-label position="stacked">Receita:</ion-label>
-          <ion-note color="success"> R$ 600,00</ion-note>
+          <ion-note color="success">{{this.receita.toFixed(2)}}</ion-note>
 
         </ion-item>
 
@@ -34,7 +34,7 @@
         <ion-item class="quantidadeDespesa">
 
           <ion-label position="stacked">Despesa:</ion-label>
-          <ion-note color="danger"> R$ 300,00</ion-note>
+          <ion-note color="danger"> {{this.despesa.toFixed(2)}}</ion-note>
 
         </ion-item>
 
@@ -50,40 +50,14 @@
 
           <ion-list-header>Ações</ion-list-header>
 
-          <ion-item>
+          <div *ngFor="let wallet of this.globals.stockPortfolio">
+            <ion-item>
+              <ion-label>{{wallet.symbol}}</ion-label>
+              <ion-note slot="end" color="success">{{wallet.actualValue.toFixed(2)}}</ion-note>
+            </ion-item>
+          </div>
 
-            <ion-label>WEGE3</ion-label>
-            <ion-note slot="end">200,00</ion-note>
 
-          </ion-item>
-
-          <ion-item>
-
-            <ion-label>ITSA3</ion-label>
-            <ion-note slot="end">150,00</ion-note>
-
-          </ion-item>
-
-          <ion-item>
-
-            <ion-label>MGLU3</ion-label>
-            <ion-note slot="end">150,00</ion-note>
-
-          </ion-item>
-
-          <ion-item>
-
-            <ion-label>FLRY3</ion-label>
-            <ion-note slot="end">100,00</ion-note>
-
-          </ion-item>
-
-          <ion-item>
-
-            <ion-label>TAEE3</ion-label>
-            <ion-note slot="end">100,00</ion-note>
-
-          </ion-item>
 
         </ion-list>
 
@@ -92,6 +66,9 @@
     </ion-row>
 
   </ion-grid>
+
+
+
 
 
 
