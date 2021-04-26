@@ -6,7 +6,7 @@ interface Transaction {
   typeDesp: string
 }
 @Component({
-  selector: 'app-home',
+  selector: 'AddTransacoes',
   templateUrl: 'AddTransacoes.html',
   styleUrls: ['AddTransacoes.scss'],
 })
