@@ -8,11 +8,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'extrato-geral',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'carteira-acoes',
+    path: 'investimentos',
     loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
   },
   {

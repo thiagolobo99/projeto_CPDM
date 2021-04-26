@@ -24,7 +24,6 @@ export class HomePage implements OnInit {
 
   calculaSaldo(globals: Globals) {
     this.saldo = Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
-    console.log(this.saldo.toFixed(2));
     globals.stockPortfolio.forEach(s =>{
       this.saldo = Number(this.saldo.toFixed(2)) + Number(s.actualValue.toFixed(2))
     })

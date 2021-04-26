@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { CarteiraAcoesPageRoutingModule } from './carteira-acoes-routing.module';
 
 import { CarteiraAcoesPage } from './carteira-acoes.page';
+import { MenuPrincipalComponent } from 'src/app/menu-principal/menu-principal.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { CarteiraAcoesPage } from './carteira-acoes.page';
     IonicModule,
     CarteiraAcoesPageRoutingModule
   ],
-  declarations: [CarteiraAcoesPage],
+  declarations: [CarteiraAcoesPage,
+  MenuPrincipalComponent],
   providers: [Globals]
 })
 export class CarteiraAcoesPageModule {}
