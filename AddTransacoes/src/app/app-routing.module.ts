@@ -9,9 +9,21 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'extrato-geral',
     pathMatch: 'full'
   },
+  {
+    path: 'carteira-acoes',
+    loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
+  },
+  {
+    path: 'extrato-geral',
+    loadChildren: () => import('./components/Extrato/extrato-geral/extrato-geral.module').then( m => m.ExtratoGeralPageModule)
+  },
+  // {
+  //   path: 'popover/:carteiraComprada', loadChildren: './popover/popover.component.html'
+  // }
+
 ];
 
 @NgModule({

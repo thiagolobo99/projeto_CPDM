@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Extrato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+
+    <ion-card-content>
+      <ion-text class="ion-padding ion-text-center">
+        <h1>R$ {{saldo}}</h1>
+      </ion-text>
+    </ion-card-content>
+
+    <ion-list class="ion-padding ion-content-space">
+
+      <ion-item *ngFor="let transaction of extract">
+
+        <ion-label>
+          {{transaction.date}}
+        </ion-label>
+
+        <ion-label>
+          {{transaction.description}}
+        </ion-label>
+
+        <ion-label class="value" [ngClass]="{entrada: transaction.type}">
+          R$ {{transaction.value}}
+        </ion-label>
+
+      </ion-item>
+
+
+    </ion-list>
+
+  </ion-card>
+</ion-content>

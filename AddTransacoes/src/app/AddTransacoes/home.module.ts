@@ -4,7 +4,13 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './AddTransacoes';
 
+<<<<<<< HEAD:AddTransacoes/src/app/AddTransacoes/home.module.ts
 import { HomePageRoutingModule } from './AddTransacoes.module';
+=======
+import { HomePageRoutingModule } from './home-routing.module';
+import { Globals } from './../DAO';
+import { MenuPrincipalComponent } from '../menu-principal/menu-principal.component';
+>>>>>>> origin/main:projeto_CPDM/src/app/home/home.module.ts
 
 
 @NgModule({
@@ -14,6 +20,10 @@ import { HomePageRoutingModule } from './AddTransacoes.module';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    MenuPrincipalComponent
+  ],
+  providers: [Globals]
 })
 export class HomePageModule {}
