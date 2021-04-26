@@ -1,4 +1,3 @@
-import { Globals } from './../../DAO';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +16,5 @@ import { AddAcoesPage } from './add-acoes.page';
     AddAcoesPageRoutingModule
   ],
   declarations: [AddAcoesPage],
-  providers: [Globals]
 })
 export class AddAcoesPageModule {}

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 //import { NavParams, PopoverController } from '@ionic/angular';
 import { FormsModule }   from '@angular/forms';
-//import { Globals, walletInterface } from './../DAO';
 import { DatabaseService, sharesToBuyInterfaceNew, walletInterfaceNew} from './../database.service';
 
 @Component({

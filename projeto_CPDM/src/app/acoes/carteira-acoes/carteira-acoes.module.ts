@@ -1,4 +1,3 @@
-import { Globals } from './../../DAO';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +17,5 @@ import { CarteiraAcoesPage } from './carteira-acoes.page';
     CarteiraAcoesPageRoutingModule
   ],
   declarations: [CarteiraAcoesPage],
-  providers: [Globals]
 })
 export class CarteiraAcoesPageModule {}

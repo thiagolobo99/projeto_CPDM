@@ -2,8 +2,6 @@ import { DatabaseService, sharesToBuyInterfaceNew, walletInterfaceNew} from './.
 //import { TypeofExpr } from '@angular/compiler';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { IonSearchbar } from '@ionic/angular';
-//import { Globals, sharesToBuyInterface, walletInterface } from './../../DAO';
-
 @Component({
   selector: 'app-add-acoes',
   templateUrl: './add-acoes.page.html',
