@@ -28,6 +28,12 @@ export class ExtratoGeralPage {
       description: "Salario",
       value: 2000.00,
       type: true
+    },
+    {
+      date: "23 ABRIL",
+      description: "Gastos Gerais",
+      value: 200.00,
+      type: false
     }
   ]
 
