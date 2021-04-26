@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { Globals } from './../DAO';
+import { MenuPrincipalComponent } from '../menu-principal/menu-principal.component';
 
 
 @NgModule({
@@ -14,6 +16,10 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    MenuPrincipalComponent
+  ],
+  providers: [Globals]
 })
 export class HomePageModule {}
