@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    loadChildren: () => import('./AddTransacoes/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'carteira-acoes',
+    redirectTo: 'extrato-geral',
     pathMatch: 'full'
   },
   {
@@ -16,10 +17,9 @@ const routes: Routes = [
     loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
   },
   {
-    path: 'add-acoes',
-    loadChildren: () => import('./acoes/add-acoes/add-acoes.module').then( m => m.AddAcoesPageModule)
+    path: 'extrato-geral',
+    loadChildren: () => import('./components/Extrato/extrato-geral/extrato-geral.module').then( m => m.ExtratoGeralPageModule)
   },
-
   // {
   //   path: 'popover/:carteiraComprada', loadChildren: './popover/popover.component.html'
   // }

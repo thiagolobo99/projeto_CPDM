@@ -1,0 +1,25 @@
+.sc-ion-input-ios-h {
+  font-size: larger;
+}
+
+.acoes {
+  ion-list-header {
+    font-size: larger;
+  }
+
+  ion-label,
+  ion-note {
+    font-size: 16px;
+  }
+}
+
+.saldo,
+.quantidadeDespesa,
+.quantidadeReceita {
+  ion-note {
+    font-size: 18px;
+  }
+  ion-label {
+    font-size: small;
+  }
+}
