@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Receitas</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title>Nova receita</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+
+            <ion-item color="light">
+              <ion-label position="floating">Receita</ion-label>
+              <ion-input type="text" [(ngModel)]="selectedValueDesp"></ion-input>
+            </ion-item>
+
+            <ion-item color="light">
+              <ion-label position="floating">Valor</ion-label>
+              <ion-input type="number" [(ngModel)]="selectedValue"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Tipo de receita</ion-label>
+
+              <ion-select interface="action-sheet" [(ngModel)]="selectedValueDespDesc">
+                <ion-select-option value="fix">Fixa</ion-select-option>
+                <ion-select-option value="var">Variável</ion-select-option>
+
+              </ion-select>
+
+
+            </ion-item>
+
+            <div margin-vertical text-right>
+              <ion-button (click)="BotaoAdd()" size="medium" fill="solid">
+                Add
+              </ion-button>
+
+              <ion-button (click)="BotaoCancel()" size="medium" fill="outline" color="danger">
+                <ion-icon slot="start" name="close"> </ion-icon>
+                Cancel
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<app-menu-principal></app-menu-principal>
