@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col>
+
+        <ion-item class="saldo">
+
+          <ion-label position="stacked">Saldo em contas:</ion-label>
+          <ion-note color="primary">{{this.saldo.toFixed(2)}}</ion-note>
+
+        </ion-item>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col size="6">
+
+        <ion-item class="quantidadeReceita">
+
+          <ion-label position="stacked">Receita:</ion-label>
+          <ion-note color="success">{{this.receita.toFixed(2)}}</ion-note>
+
+        </ion-item>
+
+      </ion-col>
+
+      <ion-col size="6">
+
+        <ion-item class="quantidadeDespesa">
+
+          <ion-label position="stacked">Despesa:</ion-label>
+          <ion-note color="danger"> {{this.despesa.toFixed(2)}}</ion-note>
+
+        </ion-item>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col class="acoes">
+
+        <ion-list>
+
+          <ion-list-header>Ações</ion-list-header>
+
+          <div *ngFor="let wallet of this.globals.stockPortfolio">
+            <ion-item>
+              <ion-label>{{wallet.symbol}}</ion-label>
+              <ion-note slot="end" color="success">{{wallet.actualValue.toFixed(2)}}</ion-note>
+            </ion-item>
+          </div>
+
+        </ion-list>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+  <app-menu-principal></app-menu-principal>
+
+</ion-content>
