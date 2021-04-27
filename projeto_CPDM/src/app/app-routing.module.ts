@@ -21,7 +21,12 @@ const routes: Routes = [
   }, {
     path: 'despesas',
     loadChildren: () => import('./add-transacao/add-transacao.module').then(m => m.AddTransacaoPageModule)
+  },
+  {
+    path: 'receitas',
+    loadChildren: () => import('./receitas/receitas.module').then( m => m.ReceitasPageModule)
   }
+
   // {
   //   path: 'popover/:carteiraComprada', loadChildren: './popover/popover.component.html'
   // }
