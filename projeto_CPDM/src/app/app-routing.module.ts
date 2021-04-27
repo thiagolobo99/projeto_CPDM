@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,12 +13,15 @@ const routes: Routes = [
   },
   {
     path: 'investimentos',
-    loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
+    loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then(m => m.CarteiraAcoesPageModule)
   },
   {
     path: 'extrato-geral',
-    loadChildren: () => import('./components/Extrato/extrato-geral/extrato-geral.module').then( m => m.ExtratoGeralPageModule)
-  },
+    loadChildren: () => import('./components/Extrato/extrato-geral/extrato-geral.module').then(m => m.ExtratoGeralPageModule)
+  }, {
+    path: 'despesas',
+    loadChildren: () => import('./add-transacao/add-transacao.module').then(m => m.AddTransacaoPageModule)
+  }
   // {
   //   path: 'popover/:carteiraComprada', loadChildren: './popover/popover.component.html'
   // }
