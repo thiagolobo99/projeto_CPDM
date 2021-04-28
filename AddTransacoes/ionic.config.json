@@ -1,0 +1,7 @@
+{
+  "name": "AddTransacoes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
