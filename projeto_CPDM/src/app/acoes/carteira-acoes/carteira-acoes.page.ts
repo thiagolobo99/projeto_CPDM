@@ -1,22 +1,12 @@
-import { Globals, wallet } from './../../DAO';
+import { DatabaseService, walletInterfaceNew} from './../../database.service';
 import { getLocaleDateFormat } from '@angular/common';
 import { NodeWithI18n } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { Toast } from '@capacitor/core';
 //Para funcionar o popover
 import { NavController, PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../popover/popover.component';
-
-
-//Para funcionar o popover
-
-interface carteira{
-  symbol: string;
-  description: string;
-  quantity: number;
-  actualValue: number;
-  syncDate: String;
-}
+import { summaryFileName } from '@angular/compiler/src/aot/util';
 
 
 @Component({
@@ -26,61 +16,53 @@ interface carteira{
 })
 
 export class CarteiraAcoesPage implements OnInit {
-
-  globals: Globals;
-
+  private acoesCarteira: walletInterfaceNew[] = [];
 
 
-// carteiraComprada: carteira[] = [
-// { symbol: "PETR3", description: "Petroleo Brasileiro SA Petrobras", quantity: 500, actualValue: 10150.25, syncDate: new Date().toISOString()},
-// { symbol: "SHOW3", description: "Time For Fun", quantity: 200, actualValue: 6000, syncDate: Date.now().toString()},
-// { symbol: "MXRF11", description: "Maxi Renda Fundo de Investimento Imobiliario - FII", quantity: 300, actualValue: 3110.50, syncDate: Date.now().toString()},
-// { symbol: "BRML3", description: "brMalls", quantity: 100, actualValue: 980, syncDate: Date.now().toString()},
-// { symbol: "GGBR4", description: "Gerdau", quantity: 200, actualValue: 3122.00, syncDate: Date.now().toString()},
-// ]
+  public totalValueWallet : number = 0;
 
 
-  //public testeCart = null;
-
-  constructor(public popoverController:PopoverController, private nav: NavController, globals:Globals,) {
-    this.globals = globals;
+  constructor(public popoverController: PopoverController,
+    private nav: NavController,
+    /*@Inject(Globals) private globals: Globals,*/
+    public database: DatabaseService) {
    }
 
+
   ngOnInit() {
-
-    //carteiraComprada : this.globals.stockPortfolio;
-
-    //carteiraComprada = this.globals.stockPortfolio;
-
+     this.getAcoes();
   }
-  //console.log(ev["srcElement.id"])
 
-  //async presentPopover(ev: any, dados: carteira) {
-    async presentPopover(ev: any, wallets: wallet) {
+   ionViewWillEnter() {
+     this.getAcoes();
 
-    //console.log(ev["srcElement"].id)
+     this.getTotalValueWallet();
+   }
+  async presentPopover(ev: any, wallets: walletInterfaceNew) {
 
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps:{
-        //id_carteira: ev["srcElement"].id,
         walletObject: wallets
-
       },
       cssClass: 'my-custom-class',
       event: ev,
       translucent: true
     });
-
     return await popover.present();
   }
 
-  public updateAction(){
+  // novos métodos
+  public getAcoes(){
+    if (this.database.getAcoesCarteira().length > 0){
+      this.acoesCarteira = this.database.getAcoesCarteira();
+      }
+    }
 
-    //this.testeCart = null;
-    //this.testeCart = this.navParams.get('atualizaAcao');
+  public getTotalValueWallet()
+  {
+    this.database.getTotalValue();
+    this.totalValueWallet = this.database.totalValueWallet;
 
   }
-
-
 }

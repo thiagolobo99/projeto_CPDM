@@ -6,21 +6,27 @@
 </ion-row>
 <ion-row>
   <ion-col>
-    <p>Quantidade comprada</p>
-    <ion-input value="{{walletObject.quantity}}">
-
-    </ion-input>
+    <ion-item>"Quantidade comprada:<p>&nbsp;</p>
+      <ion-input [(ngModel)]="this.quantidadeComprada" value="{{this.quantidadeComprada}}"></ion-input>
+    </ion-item>
   </ion-col>
 </ion-row>
 <ion-row>
   <ion-col>
-  <ion-button>
+   <ion-button expand="block" (click)="this.atualizarAcao()">
+    <!-- <ion-button expand="block" (click)="this.atualizarAcao(this.quantidadeComprada)"> -->
     Atualizar
+    <!-- wallet)
+  onclick="global.updateWallet(walletObject)">
+    Atualizar -->
   </ion-button>
   </ion-col>
   <ion-col>
-    <ion-button>
+    <ion-button (click)="this.apagarAcao()">
       Excluir
     </ion-button>
   </ion-col>
 </ion-row>
+
+
+<!-- <ion-input [(ngModel)]="this.quantidadeComprada" value=""></ion-input> -->

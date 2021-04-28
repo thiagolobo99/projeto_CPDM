@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CarteiraAcoesPageRoutingModule } from './carteira-acoes-routing.module';
+import { AddAcoesPageRoutingModule } from './add-acoes-routing.module';
 
-import { CarteiraAcoesPage } from './carteira-acoes.page';
-
+import { AddAcoesPage } from './add-acoes.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CarteiraAcoesPageRoutingModule
+    AddAcoesPageRoutingModule
   ],
-  declarations: [CarteiraAcoesPage],
+  declarations: [AddAcoesPage],
 })
-export class CarteiraAcoesPageModule {}
+export class AddAcoesPageModule {}
