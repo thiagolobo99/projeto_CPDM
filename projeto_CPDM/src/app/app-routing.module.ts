@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'investimentos',
+    path: 'carteira-acoes',
     loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then(m => m.CarteiraAcoesPageModule)
   },
   {
@@ -26,10 +26,10 @@ const routes: Routes = [
     path: 'receitas',
     loadChildren: () => import('./receitas/receitas.module').then( m => m.ReceitasPageModule)
   },
-  {
-    path: 'carteira-acoes',
-    loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
-  },
+  // {
+  //   path: 'carteira-acoes',
+  //   loadChildren: () => import('./acoes/carteira-acoes/carteira-acoes.module').then( m => m.CarteiraAcoesPageModule)
+  // },
   {
     path: 'add-acoes',
     loadChildren: () => import('./acoes/add-acoes/add-acoes.module').then( m => m.AddAcoesPageModule)

@@ -8,12 +8,15 @@ import { AddAcoesPageRoutingModule } from './add-acoes-routing.module';
 
 import { AddAcoesPage } from './add-acoes.page';
 
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddAcoesPageRoutingModule
+    AddAcoesPageRoutingModule,
+    IonicStorageModule.forRoot(),
   ],
   declarations: [AddAcoesPage],
 })

@@ -7,15 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { CarteiraAcoesPageRoutingModule } from './carteira-acoes-routing.module';
 
 import { CarteiraAcoesPage } from './carteira-acoes.page';
-
+import { MenuPrincipalComponent } from '../../menu-principal/menu-principal.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CarteiraAcoesPageRoutingModule
+    CarteiraAcoesPageRoutingModule,
+    IonicStorageModule.forRoot(),
   ],
-  declarations: [CarteiraAcoesPage],
+  declarations: [CarteiraAcoesPage,
+    MenuPrincipalComponent],
+
 })
 export class CarteiraAcoesPageModule {}
