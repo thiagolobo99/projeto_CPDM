@@ -32,10 +32,9 @@ export class HomePage implements OnInit {
 
   calculaSaldo() {
     this.saldo = Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
-    this.acoesCarteira.forEach(s =>{
-      this.saldo = Number(this.saldo.toFixed(2)) + Number(s.actualValue.toFixed(2))
-    })
-
+    this.acoesCarteira.forEach(acao =>{
+      this.saldo = Number(this.saldo.toFixed(2)) + Number(acao.actualValue.toFixed(2))
+    });
   }
 
     // novos métodos
