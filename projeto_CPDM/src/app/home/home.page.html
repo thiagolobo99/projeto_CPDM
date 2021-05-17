@@ -50,7 +50,7 @@
 
           <ion-list-header>Ações</ion-list-header>
 
-          <div *ngFor="let wallet of this.globals.stockPortfolio">
+          <div *ngFor="let wallet of this.acoesCarteira">
             <ion-item>
               <ion-label>{{wallet.symbol}}</ion-label>
               <ion-note slot="end" color="success">{{wallet.actualValue.toFixed(2)}}</ion-note>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Globals } from './../DAO';
+import { DatabaseService, walletInterfaceNew } from './../database.service';
 
 @Component({
   selector: 'app-home',
@@ -9,26 +8,47 @@ import { Globals } from './../DAO';
 })
 export class HomePage implements OnInit {
 
+  public acoesCarteira: walletInterfaceNew[] = [];
+  public totalValueWallet: number = 0;
   receita: number = 1000.0;
   despesa: number = 500.00;
   saldo: number = 0.0;
 
-  globals: Globals;
 
-  constructor(globals: Globals) {
-    this.globals = globals;
-    this.calculaSaldo(globals);
+  constructor(public database: DatabaseService) {
+   
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.calculaSaldo();
+  }
 
-  calculaSaldo(globals: Globals) {
+  ionViewWillEnter() {
+    this.calculaSaldo();
+
+  }
+
+  calculaSaldo() {
+    this.getAcoes();
+    this.getTotalValueWallet();
     this.saldo = Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
-    globals.stockPortfolio.forEach(s =>{
+    this.acoesCarteira.forEach(s =>{
       this.saldo = Number(this.saldo.toFixed(2)) + Number(s.actualValue.toFixed(2))
     })
 
   }
+
+    // novos métodos
+    public getAcoes() {
+      if (this.database.getAcoesCarteira().length > 0) {
+        this.acoesCarteira = this.database.getAcoesCarteira();
+      }
+    }
+  
+    public getTotalValueWallet() {
+      this.database.getTotalValue();
+      this.totalValueWallet = this.database.totalValueWallet;
+    }
 
 
 }
