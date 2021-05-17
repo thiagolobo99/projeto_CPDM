@@ -16,21 +16,21 @@ export class HomePage implements OnInit {
 
 
   constructor(public database: DatabaseService) {
-   
-  }
+     }
 
   ngOnInit() {
+    this.getAcoes();
+    this.getTotalValueWallet();
     this.calculaSaldo();
   }
 
   ionViewWillEnter() {
+    this.getAcoes();
+    this.getTotalValueWallet();
     this.calculaSaldo();
-
   }
 
   calculaSaldo() {
-    this.getAcoes();
-    this.getTotalValueWallet();
     this.saldo = Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
     this.acoesCarteira.forEach(s =>{
       this.saldo = Number(this.saldo.toFixed(2)) + Number(s.actualValue.toFixed(2))
