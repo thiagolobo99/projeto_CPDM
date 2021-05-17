@@ -12,7 +12,8 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true">
+
+  <ion-content [fullscreen]="true" >
   <ion-card id="testeCard" class="testeCardClass">
     <ion-card-header>
       <ion-card-title>Saldo de ações</ion-card-title>
@@ -41,7 +42,7 @@
   </ion-card>
 
 
-  <ion-fab routerLink="/add-acoes" vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab class="botaoTelaAdicionarAcao"  routerLink="/add-acoes" horizontal="end" vertical="top" slot="fixed" >
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
@@ -57,4 +58,7 @@
 
 <!-- <p>{{this.acoesCarteira | json}}</p> -->
 
+
 </ion-content>
+
+<app-menu-principal></app-menu-principal>
