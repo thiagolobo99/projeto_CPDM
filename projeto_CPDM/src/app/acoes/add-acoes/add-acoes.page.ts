@@ -27,9 +27,9 @@ export class AddAcoesPage implements OnInit {
   constructor(
     //@Inject(Globals) private globals:Globals,
     public database: DatabaseService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ionViewWillEnter() {
     this.selectedValue = null;

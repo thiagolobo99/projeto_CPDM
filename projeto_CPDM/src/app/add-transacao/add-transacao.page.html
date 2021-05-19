@@ -1,17 +1,16 @@
-<ion-header [translucent]="true">
-
-  <ion-toolbar>
-
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-
-    <ion-title>Despesas</ion-title>
-
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+
+    <ion-toolbar>
+
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+
+      <ion-title>Despesas</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
 
   <ion-grid>
     <ion-row>
@@ -44,8 +43,8 @@
 
             </ion-item>
 
-            <div margin-vertical text-right>
-              <ion-button (click)="BotaoAdd()" size="medium" fill="solid">
+            <ion-item margin-vertical text-right>
+              <ion-button class="add" (click)="BotaoAdd()" size="medium" fill="solid">
                 Add
               </ion-button>
 
@@ -53,7 +52,7 @@
                 <ion-icon slot="start" name="close"> </ion-icon>
                 Cancel
               </ion-button>
-            </div>
+            </ion-item>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -91,6 +90,7 @@
       </ion-item>
     </ion-list>
   </ion-item-group>
-</ion-content>
 
-<app-menu-principal></app-menu-principal>
+  <app-menu-principal></app-menu-principal>
+
+</ion-content>

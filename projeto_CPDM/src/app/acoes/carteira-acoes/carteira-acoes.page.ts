@@ -20,7 +20,7 @@ export class CarteiraAcoesPage implements OnInit {
     //private nav: NavController,
 
     public database: DatabaseService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getAcoes();

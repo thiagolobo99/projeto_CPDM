@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
 
 
   constructor(public database: DatabaseService) {
-     }
+  }
 
   ngOnInit() {
     this.getAcoes();
@@ -32,22 +32,22 @@ export class HomePage implements OnInit {
 
   calculaSaldo() {
     this.saldo = Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
-    this.acoesCarteira.forEach(acao =>{
+    this.acoesCarteira.forEach(acao => {
       this.saldo = Number(this.saldo.toFixed(2)) + Number(acao.actualValue.toFixed(2))
     });
   }
 
-    // novos métodos
-    public getAcoes() {
-      if (this.database.getAcoesCarteira().length > 0) {
-        this.acoesCarteira = this.database.getAcoesCarteira();
-      }
+  // novos métodos
+  public getAcoes() {
+    if (this.database.getAcoesCarteira().length > 0) {
+      this.acoesCarteira = this.database.getAcoesCarteira();
     }
-  
-    public getTotalValueWallet() {
-      this.database.getTotalValue();
-      this.totalValueWallet = this.database.totalValueWallet;
-    }
+  }
+
+  public getTotalValueWallet() {
+    this.database.getTotalValue();
+    this.totalValueWallet = this.database.totalValueWallet;
+  }
 
 
 }

@@ -9,7 +9,7 @@ describe('PopoverComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopoverComponent ],
+      declarations: [PopoverComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

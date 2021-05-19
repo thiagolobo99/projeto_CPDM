@@ -20,4 +20,4 @@ import { IonicStorageModule } from '@ionic/storage-angular';
   ],
   declarations: [AddAcoesPage],
 })
-export class AddAcoesPageModule {}
+export class AddAcoesPageModule { }

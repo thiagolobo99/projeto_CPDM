@@ -8,7 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { Globals } from './../DAO';
 import { MenuPrincipalComponent } from '../menu-principal/menu-principal.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -22,4 +21,4 @@ import { MenuPrincipalComponent } from '../menu-principal/menu-principal.compone
   ],
   providers: [Globals]
 })
-export class HomePageModule {}
+export class HomePageModule { }

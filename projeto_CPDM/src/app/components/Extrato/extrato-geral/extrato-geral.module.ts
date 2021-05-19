@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ExtratoGeralPageRoutingModule } from './extrato-geral-routing.module';
 
 import { ExtratoGeralPage } from './extrato-geral.page';
+import { MenuPrincipalComponent } from '../../../menu-principal/menu-principal.component'
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { ExtratoGeralPage } from './extrato-geral.page';
     IonicModule,
     ExtratoGeralPageRoutingModule
   ],
-  declarations: [ExtratoGeralPage]
+  declarations: [
+    ExtratoGeralPage,
+    MenuPrincipalComponent
+  ]
 })
 export class ExtratoGeralPageModule { }

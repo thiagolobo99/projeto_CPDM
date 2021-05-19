@@ -9,7 +9,7 @@ describe('ExtratoGeralPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExtratoGeralPage ],
+      declarations: [ExtratoGeralPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
