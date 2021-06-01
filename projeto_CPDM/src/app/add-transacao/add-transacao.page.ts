@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 interface Transaction {
   date: Date;
   amount: number;
-  typeDesp: string
+  typeDesp: string;
+  receitaDespesa: string;
 }
 
 @Component({
@@ -12,6 +13,7 @@ interface Transaction {
   styleUrls: ['./add-transacao.page.scss'],
 })
 export class AddTransacaoPage  {
+  public selectedValueReceitaDespesa= '';
   public counter = 0;
   public selectedValue = 0;
   public selectedValueDesp ='';
@@ -19,15 +21,18 @@ export class AddTransacaoPage  {
   public transactionsVar: Transaction[] = [];
   public selectedValueDespDesc = '';
   counterDesp: string;
+  counterRecDesp: string;
 
   public addDespesa() {
     if(this.selectedValue != 0){
       if(this.selectedValueDespDesc == 'fix'){
         this.counter += this.selectedValue;
         this.counterDesp += this.selectedValueDesp;
+        this.counterRecDesp += this.selectedValueReceitaDespesa;
         this.transactionsFix.unshift({
         typeDesp: this.selectedValueDesp,
         amount: this.selectedValue,
+        receitaDespesa: this.selectedValueReceitaDespesa,
         date: new Date(),
       });
       }
@@ -38,6 +43,7 @@ export class AddTransacaoPage  {
         this.transactionsVar.unshift({
         typeDesp: this.selectedValueDesp,
         amount: this.selectedValue,
+        receitaDespesa: this.selectedValueReceitaDespesa,
         date: new Date(),
       });
 
@@ -49,7 +55,7 @@ export class AddTransacaoPage  {
 
   public BotaoAdd(){
     this.addDespesa()
-    console.log('ota')
+    console.log(this.selectedValueReceitaDespesa)
   }
 
 
