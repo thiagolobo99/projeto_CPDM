@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { StockService } from './stock.service';
+
+export interface extratoInterfaceNew {
+  description: string;
+  value: number;
+  tipoExtrato: boolean;
+}
 export interface walletInterfaceNew {
   symbol: string;
   description: string;
@@ -79,6 +85,7 @@ export interface labdoLastQuotedValue {
   providedIn: 'root',
 })
 export class DatabaseService {
+  carteiraExtrato: extratoInterfaceNew[] = [];
   carteiraAcoes: walletInterfaceNew[] = [];
   acoesDisponiveis: sharesToBuyInterfaceNew[] = [];
   public totalValueWallet: number = 0;
@@ -105,6 +112,10 @@ export class DatabaseService {
     this.storage.set('carteiraAcoes', this.carteiraAcoes);
   }
 
+  private saveAtStorageExtrato() {
+    this.storage.set('carteiraExtrato', this.carteiraExtrato);
+  }
+
   async adicionarAcao(acao: labdoStock, quantidadeComprada: number) {
     await this.syncStockValue(acao.cd_acao);
 
@@ -118,6 +129,30 @@ export class DatabaseService {
 
     this.saveAtStorage();
     this.getTotalValue();
+  }
+
+  async adicionarExtrato(
+    nomeExtrato: string,
+    valorExtrato: number,
+    extratoPositivo: boolean
+  ) {
+    if (extratoPositivo) {
+      //extrato POSITIVO
+
+      this.carteiraExtrato.push({
+        description: nomeExtrato,
+        value: valorExtrato,
+        tipoExtrato: extratoPositivo,
+      });
+    } else {
+      this.carteiraExtrato.push({
+        description: nomeExtrato,
+        value: valorExtrato,
+        tipoExtrato: extratoPositivo,
+      });
+    }
+
+    this.saveAtStorageExtrato();
   }
 
   getAcoesCarteira() {
