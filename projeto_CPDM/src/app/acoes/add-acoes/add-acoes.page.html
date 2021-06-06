@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
-
-    <ion-searchbar debounce="500" (ionChange)="_ionChange($event)"></ion-searchbar>
+    <ion-searchbar placeholder="Procurar ação" debounce="500" (ionChange)="_ionChange($event)"></ion-searchbar>
     <ion-buttons slot="start">
       <ion-button routerLink="/carteira-acoes">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
@@ -12,19 +11,12 @@
 
 <ion-content>
   <div *ngIf="selectedValue && ativo" >
-    <!-- <p>Código: {{selectedValue.symbol}}</p>
-    <p>Nome: {{selectedValue.name}}</p>
-    <p>Região: {{selectedValue.region}}</p>
-    <ion-input id="quantidadeComprada" [(ngModel)]="this.quantidadeComprada" value=""></ion-input>
-    <p>Quantidade comprada</p>
-    <ion-button (click)="addAcoesNovo(selectedValue)">Adicionar</ion-button><p></p> -->
-
     <ion-card id="addAcao" class="addAcao">
       <ion-card-header>
-        <ion-card-title>{{selectedValue.symbol}} - {{selectedValue.name}}</ion-card-title>
+        <ion-card-title>{{selectedValue.cd_acao}} - {{selectedValue.nm_empresa}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Região: {{selectedValue.region}}</p>
+        <p></p>
           <ion-item>Quantidade comprada:<p>&nbsp;</p>
             <ion-input id="quantidadeComprada" [(ngModel)]="this.quantidadeComprada" value=""></ion-input>
             <ion-button (click)="addAcoesNovo(selectedValue)" routerLink="/carteira-acoes">Adicionar</ion-button>
@@ -36,7 +28,7 @@
   <div *ngIf="ativo" >
     <ion-list   *ngFor="let acao of this.searchedItem">
       <ion-item (click)="selectAction(acao)" for="quantidadeComprada">
-        {{acao.symbol+", "+acao.name}}
+        {{acao.cd_acao+", "+acao.nm_empresa}}
       </ion-item>
     </ion-list>
   </div>

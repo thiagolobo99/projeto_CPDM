@@ -12,13 +12,11 @@ import { summaryFileName } from '@angular/compiler/src/aot/util';
   styleUrls: ['./carteira-acoes.page.scss'],
 })
 export class CarteiraAcoesPage implements OnInit {
-  private acoesCarteira: walletInterfaceNew[] = [];
+  public acoesCarteira: walletInterfaceNew[] = [];
   public totalValueWallet: number = 0;
 
   constructor(
     public popoverController: PopoverController,
-    //private nav: NavController,
-
     public database: DatabaseService
   ) {}
 
@@ -28,7 +26,6 @@ export class CarteiraAcoesPage implements OnInit {
 
   ionViewWillEnter() {
     this.getAcoes();
-
     this.getTotalValueWallet();
   }
 
@@ -54,6 +51,13 @@ export class CarteiraAcoesPage implements OnInit {
 
   public getTotalValueWallet() {
     this.database.getTotalValue();
-    this.totalValueWallet = this.database.totalValueWallet;
+  }
+
+  public syncAllStocks() {
+    this.database.syncAllStockValue();
+  }
+
+  public loadLabdoStock() {
+    this.database.loadLabdoStock();
   }
 }

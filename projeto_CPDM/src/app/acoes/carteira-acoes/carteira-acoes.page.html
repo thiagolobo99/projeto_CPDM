@@ -10,18 +10,13 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-
-
   <ion-content [fullscreen]="true" >
   <ion-card id="testeCard" class="testeCardClass">
     <ion-card-header>
       <ion-card-title>Saldo de ações</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      {{totalValueWallet |currency:'BRL'}}
-
-      <!-- Colocar aqui a soma das ações compradas -->
+      {{database.totalValueWallet |currency:'BRL'}}
     </ion-card-content>
   </ion-card>
 
@@ -40,25 +35,22 @@
       <p allign="right">Última atualização em {{wallet.syncDate | date:'dd/MM/yyyy HH:mm'}}</p>
     </ion-card-content>
   </ion-card>
-
-
-  <ion-fab class="botaoTelaAdicionarAcao"  routerLink="/add-acoes" horizontal="end" vertical="top" slot="fixed" >
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
     <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="settings"></ion-icon>
     </ion-fab-button>
+    <ion-fab-list side="botton">
+      <ion-fab-button routerLink="/add-acoes">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="this.syncAllStocks()">
+        <ion-icon name="sync"></ion-icon>
+      </ion-fab-button>
+
+    </ion-fab-list>
   </ion-fab>
 
-
-<!-- can be "xs", "sm", "md", "lg", or "xl" -->
-<!-- <ion-split-pane when="md"></ion-split-pane> -->
-
-<!-- can be any valid media query https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries -->
-<!-- <ion-split-pane when="(min-width: 40px)"></ion-split-pane> -->
-
-
-<!-- <p>{{this.acoesCarteira | json}}</p> -->
-
-
+<app-menu-principal></app-menu-principal>
 </ion-content>
 
-<app-menu-principal></app-menu-principal>
+
