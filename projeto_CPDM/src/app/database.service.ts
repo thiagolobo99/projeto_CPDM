@@ -11,6 +11,10 @@ export interface walletInterfaceNew {
   actualValue: number;
   syncDate: string;
 }
+export interface categoriainterface{
+  name: string;
+  type: string;
+}
 // tslint:disable-next-line: class-name
 export interface sharesToBuyInterfaceNew {
   symbol: string;
@@ -31,6 +35,7 @@ export class DatabaseService {
   carteiraAcoes: walletInterfaceNew[] = [];
   acoesDisponiveis: sharesToBuyInterfaceNew[] = [];
   public totalValueWallet: number = 0;
+  categorias: categoriainterface[] = [];
 
   constructor(public storage: Storage) {
     this.loadFromStorage();
@@ -70,6 +75,38 @@ export class DatabaseService {
   }
 
   public loadValues() {
+    this.categorias = [];
+    this.categorias.push(
+      {
+        name: 'aluguel',
+        type: 'Despesa',
+      },
+
+      {
+        name: 'Salário',
+        type: 'Receita',
+      },
+
+      {
+        name: 'Conta de telefone',
+        type: 'Despesa',
+      },
+
+      {
+        name: 'Mercado',
+        type: 'Despesa',
+      },
+      {
+        name: 'Aplicação',
+        type: 'Receita',
+      },
+
+      {
+        name: 'Faculdade',
+        type: 'Despesa',
+      },
+    );
+
     this.acoesDisponiveis = [];
     this.acoesDisponiveis.push(
       {
@@ -271,4 +308,8 @@ export class DatabaseService {
     this.getTotalValue();
     this.saveAtStorage();
   }
+
+
+
+
 }
