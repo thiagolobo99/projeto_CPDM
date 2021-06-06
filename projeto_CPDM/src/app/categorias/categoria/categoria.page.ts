@@ -1,4 +1,4 @@
-import {DatabaseService, categoriainterface} from './../../database.service';
+import {DatabaseService, categoriaInterface} from './../../database.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categoria.page.scss'],
 })
 export class CategoriaPage implements OnInit {
-private categorias: categoriainterface[] = [];
+public categorias: categoriaInterface[] = [];
 public selectedTypeValue = null;
 public selectedNameValue = null;
 constructor(
@@ -22,8 +22,15 @@ constructor(
 
   public adicionarCategoria(nome: string, tipo: string)
   {
-    console.log(nome);
-    console.log(tipo);
+    this.database.adicionarCategoria(nome, tipo);
+  }
+
+  public deletarCategoria(categoria:categoriaInterface)
+  {
+    //console.log(categoria);
+
+    this.database.deletarCategoria(categoria);
+
 
   }
 

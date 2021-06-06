@@ -11,7 +11,7 @@ export interface walletInterfaceNew {
   actualValue: number;
   syncDate: string;
 }
-export interface categoriainterface{
+export interface categoriaInterface{
   name: string;
   type: string;
 }
@@ -35,7 +35,7 @@ export class DatabaseService {
   carteiraAcoes: walletInterfaceNew[] = [];
   acoesDisponiveis: sharesToBuyInterfaceNew[] = [];
   public totalValueWallet: number = 0;
-  categorias: categoriainterface[] = [];
+  categorias: categoriaInterface[] = [];
 
   constructor(public storage: Storage) {
     this.loadFromStorage();
@@ -50,13 +50,29 @@ export class DatabaseService {
     if (storedWallet) {
       this.carteiraAcoes.push(...storedWallet);
     }
-    console.log('Método loadFromStorage');
+
+    const storedCategoria = (await this.storage.get('categorias')) as categoriaInterface[];
+    if (storedCategoria) {
+      this.categorias.push(...storedCategoria);
+    }
+
+    //console.log('Método loadFromStorage');
   }
 
   //Implementar armazenamento
   private saveAtStorage() {
     this.storage.set('carteiraAcoes', this.carteiraAcoes);
+    this.storage.set('categorias', this.categorias);
     console.log('Método saveAtStorage');
+  }
+
+//  adicionarCategoria (categoria: categoriainterface) {
+  adicionarCategoria (name: string, type: string) {
+    this.categorias.push({
+     name:name,
+     type:type,
+    });
+    console.log(this.categorias);
   }
 
   adicionarAcao(acao: sharesToBuyInterfaceNew, quantidadeComprada: number) {
@@ -281,10 +297,27 @@ export class DatabaseService {
     if (indexApagar != -1) {
       this.carteiraAcoes.splice(indexApagar, 1);
     }
-    console.log(this.carteiraAcoes);
+    //console.log(this.carteiraAcoes);
     this.saveAtStorage();
     this.getTotalValue();
   }
+
+deletarCategoria(categoria:categoriaInterface){
+  console.log(categoria);
+
+  const indexApagar = this.categorias.findIndex(
+    (index: categoriaInterface) => {
+      return index.name === categoria.name;
+    }
+  );
+  if (indexApagar != -1) {
+    this.categorias.splice(indexApagar, 1);
+  }
+  //console.log(this.carteiraAcoes);
+}
+
+
+
 
   getTotalValue() {
     this.totalValueWallet = 0;

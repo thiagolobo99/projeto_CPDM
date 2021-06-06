@@ -15,12 +15,12 @@
       <div slot="auto">
       <ion-item>
         <ion-label>Despesa</ion-label>
-        <ion-radio value="despesa"></ion-radio>
+        <ion-radio value="Despesa"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Receita</ion-label>
-        <ion-radio value="receita"></ion-radio>
+        <ion-radio value="Receita"></ion-radio>
       </ion-item>
     </div>
 
@@ -37,6 +37,9 @@
 <div *ngIf="categoria.type==='Despesa'">
   <ion-item >
     {{categoria.name}}
+    <ion-button (click)="deletarCategoria(categoria)" slot="end" fill="clear" size="small" color="medium">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
   </ion-item>
 </div>
 </ion-list>
@@ -46,6 +49,9 @@
 <div *ngIf="categoria.type==='Receita'">
   <ion-item >
     {{categoria.name}}
+    <ion-button (click)="deletarCategoria(categoria)" slot="end" fill="clear" size="small" color="medium">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
   </ion-item>
 </div>
 </ion-list>
