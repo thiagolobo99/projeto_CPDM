@@ -51,6 +51,10 @@ export class AddTransacaoPage  {
   } else {
     alert("valor zerado")
   }
+
+  this.selectedValueDesp = '';
+  this.selectedValue = 0;
+  this.selectedValueDespDesc = '';
 }
 
   public BotaoAdd(){

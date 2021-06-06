@@ -26,7 +26,7 @@ export class ReceitasPage implements OnInit {
   public selectedValueDespDesc = '';
   counterDesp: string;
 
-  public addDespesa() {
+  public adicionarReceita() {
     if (this.selectedValue != 0) {
       if (this.selectedValueDespDesc == 'fix') {
         this.counter += this.selectedValue;
@@ -51,10 +51,14 @@ export class ReceitasPage implements OnInit {
     } else {
       alert("valor zerado")
     }
+
+    this.selectedValueDesp = '';
+    this.selectedValue = 0;
+    this.selectedValueDespDesc = '';
   }
 
   public BotaoAdd() {
-    this.addDespesa()
+    this.adicionarReceita()
   }
 
 
