@@ -92,6 +92,7 @@ export class DatabaseService {
   public labdoStock: labdoStock;
   public labdoLastQuotedValue: labdoLastQuotedValue;
   public id: number;
+  public saldoExtrato: number;
 
   constructor(public storage: Storage, public stockService: StockService) {
     this.loadFromStorage();
@@ -125,6 +126,10 @@ export class DatabaseService {
 
   private saveAtStorageExtrato() {
     this.storage.set('carteiraExtrato', this.carteiraExtrato);
+  }
+
+  public saveAtStorageSaldoExtrato() {
+    this.storage.set('saldoExtrato', this.saldoExtrato);
   }
 
   async adicionarAcao(acao: labdoStock, quantidadeComprada: number) {

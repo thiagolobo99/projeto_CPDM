@@ -74,6 +74,10 @@ export class ExtratoGeralPage implements OnInit {
 
     resultado = saldoPositivo - saldoNegativo;
 
-    this.saldo = resultado;
+
+    this.database.saldoExtrato = resultado;
+    this.saldo = this.database.saldoExtrato;
+    this.database.saveAtStorageSaldoExtrato();
   }
+
 }
