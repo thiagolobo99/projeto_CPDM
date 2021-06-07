@@ -2,6 +2,7 @@
 
 <ion-content>
 
+
   <ion-header>
     <ion-toolbar>
       <ion-title>Extrato</ion-title>
@@ -10,6 +11,10 @@
   <ion-card>
 
     <ion-card-content>
+
+      <ion-button (click)="mostrarConsole()">mostrar EXTRATO</ion-button>
+
+     
       <ion-text class="ion-padding ion-text-center">
         <h1>R$ {{saldo}}</h1>
       </ion-text>
@@ -17,7 +22,9 @@
 
     <ion-list class="ion-padding ion-content-space">
 
-      <ion-item *ngFor="let transaction of extract">
+      
+
+      <ion-item *ngFor="let transaction of extratoGeral">
 
         <ion-label>
           {{transaction.date}}

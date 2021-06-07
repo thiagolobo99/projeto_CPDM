@@ -5,7 +5,7 @@ import { StockService } from './stock.service';
 export interface extratoInterfaceNew {
   description: string;
   value: number;
-  tipoExtrato: boolean;
+  type: boolean;
 }
 export interface walletInterfaceNew {
   symbol: string;
@@ -95,15 +95,26 @@ export class DatabaseService {
 
   constructor(public storage: Storage, public stockService: StockService) {
     this.loadFromStorage();
+    this.loadFromStorageExtrato();
     //this.loadValues();
   }
 
   private async loadFromStorage() {
     const storedWallet = (await this.storage.get(
-      'carteiraAcoes'
+      'carteiraAcoes',
     )) as walletInterfaceNew[];
     if (storedWallet) {
       this.carteiraAcoes.push(...storedWallet);
+    }
+    console.log('Método loadFromStorage');
+  }
+
+  private async loadFromStorageExtrato() {
+    const storedWallet = (await this.storage.get(
+      'carteiraExtrato',
+    )) as extratoInterfaceNew[];
+    if (storedWallet) {
+      this.carteiraExtrato.push(...storedWallet);
     }
     console.log('Método loadFromStorage');
   }
@@ -134,21 +145,21 @@ export class DatabaseService {
   async adicionarExtrato(
     nomeExtrato: string,
     valorExtrato: number,
-    extratoPositivo: boolean
+    type: boolean
   ) {
-    if (extratoPositivo) {
+    if (type) {
       //extrato POSITIVO
 
       this.carteiraExtrato.push({
         description: nomeExtrato,
         value: valorExtrato,
-        tipoExtrato: extratoPositivo,
+        type: type,
       });
     } else {
       this.carteiraExtrato.push({
         description: nomeExtrato,
         value: valorExtrato,
-        tipoExtrato: extratoPositivo,
+        type: type,
       });
     }
 
