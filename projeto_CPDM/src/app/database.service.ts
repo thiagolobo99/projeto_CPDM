@@ -159,6 +159,10 @@ export class DatabaseService {
     return this.carteiraAcoes;
   }
 
+  getCarteiraExtrato(){
+    return this.carteiraExtrato;
+  }
+
   deletarAcao(acao: walletInterfaceNew) {
     const indexApagar = this.carteiraAcoes.findIndex(
       (index: walletInterfaceNew) => {
