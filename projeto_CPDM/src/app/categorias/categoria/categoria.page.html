@@ -1,59 +1,61 @@
 <ion-content>
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Categorias</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Cadastre uma categoria</ion-card-title>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Categorias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cadastre uma categoria</ion-card-title>
     </ion-card-header>
 
-  <ion-input [(ngModel)]="selectedNameValue" placeholder="Cadastre aqui"></ion-input>
-  <ion-list>
-    <ion-radio-group [(ngModel)]="selectedTypeValue" value="biff">
-      <div slot="auto">
-      <ion-item>
-        <ion-label>Despesa</ion-label>
-        <ion-radio value="Despesa"></ion-radio>
-      </ion-item>
+    <ion-input [(ngModel)]="selectedNameValue" placeholder="Cadastre aqui"></ion-input>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="selectedTypeValue" value="biff">
+        <div slot="auto">
+          <ion-item>
+            <ion-label>Despesa</ion-label>
+            <ion-radio value="Despesa"></ion-radio>
+          </ion-item>
 
+          <ion-item>
+            <ion-label>Receita</ion-label>
+            <ion-radio value="Receita"></ion-radio>
+          </ion-item>
+        </div>
+
+      </ion-radio-group>
+    </ion-list>
+  </ion-card>
+
+  <section>
+    <ion-button (click)="adicionarCategoria(selectedNameValue,selectedTypeValue)" expand="block">Adicionar</ion-button>
+  </section>
+
+  <ion-label>Despesas</ion-label>
+  <ion-list *ngFor="let categoria of this.categorias">
+    <div *ngIf="categoria.type==='Despesa'">
       <ion-item>
-        <ion-label>Receita</ion-label>
-        <ion-radio value="Receita"></ion-radio>
+        {{categoria.name}}
+        <ion-button (click)="deletarCategoria(categoria)" slot="end" fill="clear" size="small" color="medium">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
       </ion-item>
     </div>
-
-    </ion-radio-group>
   </ion-list>
-</ion-card>
 
-<section>
-   <ion-button (click)="adicionarCategoria(selectedNameValue,selectedTypeValue)" expand="block">Adicionar</ion-button>
-</section>
+  <ion-label>Receitas</ion-label>
+  <ion-list *ngFor="let categoria of this.categorias">
+    <div *ngIf="categoria.type==='Receita'">
+      <ion-item>
+        {{categoria.name}}
+        <ion-button (click)="deletarCategoria(categoria)" slot="end" fill="clear" size="small" color="medium">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
+  </ion-list>
 
-<ion-label>Despesas</ion-label>
-<ion-list *ngFor="let categoria of this.categorias">
-<div *ngIf="categoria.type==='Despesa'">
-  <ion-item >
-    {{categoria.name}}
-    <ion-button (click)="deletarCategoria(categoria)" slot="end" fill="clear" size="small" color="medium">
-      <ion-icon slot="icon-only" name="close"></ion-icon>
-    </ion-button>
-  </ion-item>
-</div>
-</ion-list>
-
-<ion-label>Receitas</ion-label>
-<ion-list *ngFor="let categoria of this.categorias">
-<div *ngIf="categoria.type==='Receita'">
-  <ion-item >
-    {{categoria.name}}
-    <ion-button (click)="deletarCategoria(categoria)" slot="end" fill="clear" size="small" color="medium">
-      <ion-icon slot="icon-only" name="close"></ion-icon>
-    </ion-button>
-  </ion-item>
-</div>
-</ion-list>
+  <app-menu-principal></app-menu-principal>
 
 </ion-content>
