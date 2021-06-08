@@ -2,8 +2,8 @@ import {
   DatabaseService,
   sharesToBuyInterfaceNew,
   walletInterfaceNew,
+  labdoStock,
 } from './../../database.service';
-//import { TypeofExpr } from '@angular/compiler';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { IonSearchbar } from '@ionic/angular';
 @Component({
@@ -13,15 +13,10 @@ import { IonSearchbar } from '@ionic/angular';
 })
 export class AddAcoesPage implements OnInit {
   @ViewChild('search', { static: false }) search: IonSearchbar;
-  private searchedItem: any;
+  public searchedItem: any;
   public ativo = false;
-  public selectedValue: sharesToBuyInterfaceNew;
-  //public searchedItem :
-  //sharesToBuy: sharesToBuyInterface[] = [];
-
-  //public testeW : walletInterfaceNew[];
-
-  public testeNumero: number;
+  public selectedValue: labdoStock;
+  //public testeNumero: number;
   public quantidadeComprada = 0;
 
   constructor(
@@ -33,19 +28,19 @@ export class AddAcoesPage implements OnInit {
 
   ionViewWillEnter() {
     this.selectedValue = null;
+    this.database.loadLabdoStock();
   }
 
   _ionChange(event) {
     const val = event.target.value;
 
-    this.searchedItem = this.database.acoesDisponiveis;
-
-    //debug, depois retirar
-    console.log(this.searchedItem);
+    this.searchedItem = this.database.labdoStock;
 
     if (val && val.trim() != '') {
       this.searchedItem = this.searchedItem.filter((acao: any) => {
-        return acao.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
+        //Original
+        //return acao.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
+        return acao.nm_empresa.toLowerCase().indexOf(val.toLowerCase()) > -1;
       });
       this.ativo = true;
     } else {
@@ -54,15 +49,10 @@ export class AddAcoesPage implements OnInit {
     }
   }
 
-  selectAction(value: sharesToBuyInterfaceNew) {
-    //console.log(value);
+  selectAction(value: labdoStock) {
     this.selectedValue = value;
-    //this.testeNumero = new Date().valueOf()/ 562252554;
-    this.testeNumero = Math.floor(Math.random() * 30000.82);
-    //console.log(this.testeNumero);
   }
-
-  private addAcoesNovo(value: sharesToBuyInterfaceNew) {
+  public addAcoesNovo(value: labdoStock) {
     //console.log(value);
     this.database.adicionarAcao(value, this.quantidadeComprada);
     this.ativo = null;

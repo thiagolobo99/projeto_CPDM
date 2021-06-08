@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-
-//import {} from '@ionic/storage-angular';
 import { Storage } from '@ionic/storage';
+import { StockService } from './stock.service';
 
-// tslint:disable-next-line: class-name
+export interface extratoInterfaceNew {
+  description: string;
+  value: number;
+  type: boolean;
+}
 export interface walletInterfaceNew {
   symbol: string;
   description: string;
@@ -11,7 +14,7 @@ export interface walletInterfaceNew {
   actualValue: number;
   syncDate: string;
 }
-export interface categoriaInterface{
+export interface categoriaInterface {
   name: string;
   type: string;
 }
@@ -27,22 +30,82 @@ export interface sharesToBuyInterfaceNew {
   currency: string;
   matchScore: number;
 }
+export interface GlobalQuote {
+  symbol: string;
+  open: string;
+  high: string;
+  low: string;
+  price: string;
+  volume: string;
+  latestTradingDay: string;
+  previousClose: string;
+  change: string;
+  changePercent: string;
+}
+
+export interface labdoStock {
+  id: number;
+  cd_acao: string;
+  cd_acao_rdz: string;
+  nm_empresa: string;
+  pctl_ctra: number;
+  qtd_teorica: any;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface labdoLastQuotedValue {
+  id: number;
+  tp_reg: number;
+  dt_pregao: number;
+  cd_bdi: string;
+  cd_acao: string;
+  tp_merc: number;
+  nm_empresa_rdz: string;
+  especi: string;
+  prazot: string;
+  moeda_ref: string;
+  vl_abertura: number;
+  vl_maximo: number;
+  vl_minimo: number;
+  vl_medio: number;
+  vl_fechamento: number;
+  vl_mlh_oft_compra: number;
+  vl_mlh_oft_venda: number;
+  vl_ttl_neg: number;
+  qt_tit_neg: number;
+  vl_volume: number;
+  vl_exec_opc: number;
+  in_opc: string;
+  dt_vnct_opc: number;
+  ft_cotacao: number;
+  vl_exec_moeda_corrente: number;
+  cd_isin: string;
+  cd_acao_rdz: string;
+  created_at: Date;
+  updated_at: Date;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseService {
+  carteiraExtrato: extratoInterfaceNew[] = [];
   carteiraAcoes: walletInterfaceNew[] = [];
   acoesDisponiveis: sharesToBuyInterfaceNew[] = [];
   public totalValueWallet: number = 0;
   categorias: categoriaInterface[] = [];
+  public labdoStock: labdoStock;
+  public labdoLastQuotedValue: labdoLastQuotedValue;
+  public id: number;
+  public saldoExtrato: number;
 
-  constructor(public storage: Storage) {
+  constructor(public storage: Storage, public stockService: StockService) {
     this.loadFromStorage();
-    this.loadValues();
+    this.loadFromStorageExtrato();
+    //this.loadValues();
   }
 
-  //Implementar armazenamento
   private async loadFromStorage() {
     const storedWallet = (await this.storage.get(
       'carteiraAcoes'
@@ -51,7 +114,9 @@ export class DatabaseService {
       this.carteiraAcoes.push(...storedWallet);
     }
 
-    const storedCategoria = (await this.storage.get('categorias')) as categoriaInterface[];
+    const storedCategoria = (await this.storage.get(
+      'categorias'
+    )) as categoriaInterface[];
     if (storedCategoria) {
       this.categorias.push(...storedCategoria);
     }
@@ -59,34 +124,54 @@ export class DatabaseService {
     //console.log('Método loadFromStorage');
   }
 
-  //Implementar armazenamento
+  private async loadFromStorageExtrato() {
+    const storedWallet = (await this.storage.get(
+      'carteiraExtrato'
+    )) as extratoInterfaceNew[];
+    if (storedWallet) {
+      this.carteiraExtrato.push(...storedWallet);
+    }
+    console.log('Método loadFromStorage');
+  }
+
   private saveAtStorage() {
     this.storage.set('carteiraAcoes', this.carteiraAcoes);
     this.storage.set('categorias', this.categorias);
     console.log('Método saveAtStorage');
   }
 
-//  adicionarCategoria (categoria: categoriainterface) {
-  adicionarCategoria (name: string, type: string) {
+  //  adicionarCategoria (categoria: categoriainterface) {
+  adicionarCategoria(name: string, type: string) {
     this.categorias.push({
-     name:name,
-     type:type,
+      name: name,
+      type: type,
     });
     console.log(this.categorias);
   }
 
-  adicionarAcao(acao: sharesToBuyInterfaceNew, quantidadeComprada: number) {
+  // adicionarAcao(acao: sharesToBuyInterfaceNew, quantidadeComprada: number) {
+  // }
+
+  private saveAtStorageExtrato() {
+    this.storage.set('carteiraExtrato', this.carteiraExtrato);
+  }
+
+  public saveAtStorageSaldoExtrato() {
+    this.storage.set('saldoExtrato', this.saldoExtrato);
+  }
+
+  async adicionarAcao(acao: labdoStock, quantidadeComprada: number) {
+    await this.syncStockValue(acao.cd_acao);
+
     this.carteiraAcoes.push({
-      symbol: acao.symbol,
-      description: acao.name,
-      quantity: quantidadeComprada, // colocar aqui a quantidade do input
-      actualValue: Math.floor(Math.random() * 30000.82), //colocar aqui o valor de acordo com o webservice
+      symbol: acao.cd_acao,
+      description: acao.nm_empresa,
+      quantity: quantidadeComprada,
+      actualValue: 50,
       syncDate: new Date().toISOString(),
     });
 
-    //Implementar armazenamento
     this.saveAtStorage();
-
     this.getTotalValue();
   }
 
@@ -120,7 +205,7 @@ export class DatabaseService {
       {
         name: 'Faculdade',
         type: 'Despesa',
-      },
+      }
     );
 
     this.acoesDisponiveis = [];
@@ -280,12 +365,37 @@ export class DatabaseService {
         matchScore: 0.303,
       }
     );
+  }
+  async adicionarExtrato(
+    nomeExtrato: string,
+    valorExtrato: number,
+    type: boolean
+  ) {
+    if (type) {
+      //extrato POSITIVO
 
-    //Colocar aqui para retirar ações já compradas
+      this.carteiraExtrato.push({
+        description: nomeExtrato,
+        value: valorExtrato,
+        type: type,
+      });
+    } else {
+      this.carteiraExtrato.push({
+        description: nomeExtrato,
+        value: valorExtrato,
+        type: type,
+      });
+    }
+
+    this.saveAtStorageExtrato();
   }
 
   getAcoesCarteira() {
     return this.carteiraAcoes;
+  }
+
+  getCarteiraExtrato() {
+    return this.carteiraExtrato;
   }
 
   deletarAcao(acao: walletInterfaceNew) {
@@ -302,34 +412,31 @@ export class DatabaseService {
     this.getTotalValue();
   }
 
-deletarCategoria(categoria:categoriaInterface){
-  console.log(categoria);
+  deletarCategoria(categoria: categoriaInterface) {
+    console.log(categoria);
 
-  const indexApagar = this.categorias.findIndex(
-    (index: categoriaInterface) => {
-      return index.name === categoria.name;
+    const indexApagar = this.categorias.findIndex(
+      (index: categoriaInterface) => {
+        return index.name === categoria.name;
+      }
+    );
+    if (indexApagar != -1) {
+      this.categorias.splice(indexApagar, 1);
     }
-  );
-  if (indexApagar != -1) {
-    this.categorias.splice(indexApagar, 1);
+    //console.log(this.carteiraAcoes);
   }
-  //console.log(this.carteiraAcoes);
-}
-
-
-
 
   getTotalValue() {
     this.totalValueWallet = 0;
     for (let index = 0; index < this.carteiraAcoes.length; index++) {
       this.totalValueWallet =
         this.totalValueWallet.valueOf() +
-        this.carteiraAcoes[index].actualValue.valueOf();
+        this.carteiraAcoes[index].actualValue.valueOf() *
+          this.carteiraAcoes[index].quantity.valueOf();
     }
   }
 
   atualizarAcao(acao: walletInterfaceNew, novoValor: number) {
-    //Funcionando!
     const indexAtualizar = this.carteiraAcoes.findIndex(
       (index: walletInterfaceNew) => {
         return index.symbol === acao.symbol;
@@ -338,11 +445,31 @@ deletarCategoria(categoria:categoriaInterface){
     if (indexAtualizar != -1) {
       acao.quantity = novoValor;
     }
-    this.getTotalValue();
     this.saveAtStorage();
+    this.getTotalValue();
   }
 
+  public async syncStockValue(cd_acao: string) {
+    this.labdoLastQuotedValue = await this.stockService.syncStockValues(
+      cd_acao
+    );
+  }
 
+  public async loadLabdoStock() {
+    this.labdoStock = await this.stockService.loadLabdoStock();
+    this.storage.set('labdoStock', this.labdoStock);
+  }
 
-
+  public async syncAllStockValue() {
+    for (let index = 0; index < this.carteiraAcoes.length; index++) {
+      await this.syncStockValue(this.carteiraAcoes[index].symbol);
+      console.log(this.labdoLastQuotedValue[0]);
+      console.log(this.labdoLastQuotedValue[0].vl_fechamento);
+      this.carteiraAcoes[index].actualValue =
+        this.labdoLastQuotedValue[0].vl_fechamento;
+      this.carteiraAcoes[index].syncDate = new Date().toISOString();
+    }
+    this.saveAtStorage();
+    this.getTotalValue();
+  }
 }
