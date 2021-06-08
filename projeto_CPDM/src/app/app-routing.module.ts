@@ -27,13 +27,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'receitas',
+    loadChildren: () =>
+      import('./receitas/receitas.module').then(
+        (m) => m.ReceitasPageModule
+      ),
+  },
+  {
     path: 'despesas',
     loadChildren: () =>
       import('./add-transacao/add-transacao.module').then(
         (m) => m.AddTransacaoPageModule
       ),
   },
-   {
+  {
     path: 'add-acoes',
     loadChildren: () =>
       import('./acoes/add-acoes/add-acoes.module').then(
@@ -42,9 +49,12 @@ const routes: Routes = [
   },
   {
     path: 'categoria',
-    loadChildren: () => import('./categorias/categoria/categoria.module').then( m => m.CategoriaPageModule)
+    loadChildren: () =>
+      import('./categorias/categoria/categoria.module').then(
+        (m) => m.CategoriaPageModule
+      ),
   },
-   // {
+  // {
   //   path: 'receitas',
   //   loadChildren: () =>
   //     import('./receitas/receitas.module').then((m) => m.ReceitasPageModule),
