@@ -9,16 +9,9 @@ import { Globals } from './../DAO';
 import { MenuPrincipalComponent } from '../menu-principal/menu-principal.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule
-  ],
-  declarations: [
-    HomePage,
-    MenuPrincipalComponent
-  ],
-  providers: [Globals]
+  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  declarations: [HomePage, MenuPrincipalComponent],
+  providers: [Globals],
+  exports: [MenuPrincipalComponent],
 })
-export class HomePageModule { }
+export class HomePageModule {}

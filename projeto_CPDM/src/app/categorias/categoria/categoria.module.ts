@@ -7,10 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CategoriaPageRoutingModule } from './categoria-routing.module';
 
 import { CategoriaPage } from './categoria.page';
-import { MenuPrincipalComponent } from '../../menu-principal/menu-principal.component';
+import { HomePageModule } from '../../home/home.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, CategoriaPageRoutingModule],
-  declarations: [CategoriaPage, MenuPrincipalComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    CategoriaPageRoutingModule,
+    HomePageModule,
+  ],
+  declarations: [CategoriaPage],
 })
 export class CategoriaPageModule {}

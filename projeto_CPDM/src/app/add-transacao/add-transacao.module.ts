@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddTransacaoPageRoutingModule } from './add-transacao-routing.module';
 
 import { AddTransacaoPage } from './add-transacao.page';
-import { MenuPrincipalComponent } from '../menu-principal/menu-principal.component';
+import { HomePageModule } from '../home/home.module';
 import { Globals } from '../DAO';
 
 @NgModule({
@@ -15,14 +15,10 @@ import { Globals } from '../DAO';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddTransacaoPageRoutingModule
+    AddTransacaoPageRoutingModule,
+    HomePageModule,
   ],
-  declarations: [
-    AddTransacaoPage,
-    MenuPrincipalComponent
-  ],
-  providers: [
-    Globals
-  ]
+  declarations: [AddTransacaoPage],
+  providers: [Globals],
 })
-export class AddTransacaoPageModule { }
+export class AddTransacaoPageModule {}

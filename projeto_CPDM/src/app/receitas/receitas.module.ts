@@ -8,20 +8,17 @@ import { ReceitasPageRoutingModule } from './receitas-routing.module';
 
 import { ReceitasPage } from './receitas.page';
 import { Globals } from '../DAO';
-import { MenuPrincipalComponent } from '../menu-principal/menu-principal.component';
+import { HomePageModule } from '../home/home.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReceitasPageRoutingModule
+    ReceitasPageRoutingModule,
+    HomePageModule,
   ],
-  declarations: [ReceitasPage,
-    MenuPrincipalComponent
-  ],
-  providers: [
-    Globals
-  ]
+  declarations: [ReceitasPage],
+  providers: [Globals],
 })
-export class ReceitasPageModule { }
+export class ReceitasPageModule {}

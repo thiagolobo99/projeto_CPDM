@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CarteiraAcoesPageRoutingModule } from './carteira-acoes-routing.module';
 import { CarteiraAcoesPage } from './carteira-acoes.page';
-import { MenuPrincipalComponent } from '../../menu-principal/menu-principal.component';
+import { HomePageModule } from '../../home/home.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
@@ -14,9 +14,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     IonicModule,
     CarteiraAcoesPageRoutingModule,
     IonicStorageModule.forRoot(),
+    HomePageModule,
   ],
-  declarations: [CarteiraAcoesPage,
-    MenuPrincipalComponent],
-
+  declarations: [CarteiraAcoesPage],
 })
-export class CarteiraAcoesPageModule { }
+export class CarteiraAcoesPageModule {}

@@ -7,18 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ExtratoGeralPageRoutingModule } from './extrato-geral-routing.module';
 
 import { ExtratoGeralPage } from './extrato-geral.page';
-import { MenuPrincipalComponent } from '../../../menu-principal/menu-principal.component'
+import { HomePageModule } from '../../../home/home.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ExtratoGeralPageRoutingModule
+    ExtratoGeralPageRoutingModule,
+    HomePageModule,
   ],
-  declarations: [
-    ExtratoGeralPage,
-    MenuPrincipalComponent
-  ]
+  declarations: [ExtratoGeralPage],
 })
-export class ExtratoGeralPageModule { }
+export class ExtratoGeralPageModule {}
