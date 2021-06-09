@@ -8,7 +8,7 @@
         <ion-item class="saldo">
 
           <ion-label position="stacked">Saldo em contas:</ion-label>
-          <ion-note color="primary">{{this.saldo.toFixed(2)}}</ion-note>
+          <ion-note color="primary">R$ {{this.saldo.toFixed(2)}}</ion-note>
 
         </ion-item>
 
@@ -23,7 +23,7 @@
         <ion-item class="quantidadeReceita">
 
           <ion-label position="stacked">Receita:</ion-label>
-          <ion-note color="success">{{this.receita.toFixed(2)}}</ion-note>
+          <ion-note color="success">R$ {{this.receita.toFixed(2)}}</ion-note>
 
         </ion-item>
 
@@ -34,7 +34,7 @@
         <ion-item class="quantidadeDespesa">
 
           <ion-label position="stacked">Despesa:</ion-label>
-          <ion-note color="danger"> {{this.despesa.toFixed(2)}}</ion-note>
+          <ion-note color="danger">R$ {{this.despesa.toFixed(2)}}</ion-note>
 
         </ion-item>
 
@@ -53,7 +53,7 @@
           <div *ngFor="let wallet of this.acoesCarteira">
             <ion-item>
               <ion-label>{{wallet.symbol}}</ion-label>
-              <ion-note slot="end" color="success">{{wallet.actualValue.toFixed(2)}}</ion-note>
+              <ion-note slot="end" color="success">R$ {{wallet.actualValue.toFixed(2)}}</ion-note>
             </ion-item>
           </div>
 

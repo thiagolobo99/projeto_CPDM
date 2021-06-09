@@ -14,7 +14,7 @@ export class ExtratoGeralPage implements OnInit {
   constructor(public database: DatabaseService) {}
 
   public saldo;
-  public extratoGeral = this.database.carteiraExtrato
+  public extratoGeral = this.database.carteiraExtrato;
 
   public extract = [
     // {
@@ -74,10 +74,8 @@ export class ExtratoGeralPage implements OnInit {
 
     resultado = saldoPositivo - saldoNegativo;
 
-
     this.database.saldoExtrato = resultado;
     this.saldo = this.database.saldoExtrato;
     this.database.saveAtStorageSaldoExtrato();
   }
-
 }

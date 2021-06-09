@@ -7,16 +7,14 @@ import { DatabaseService, walletInterfaceNew } from './../database.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
   public acoesCarteira: walletInterfaceNew[] = [];
   public totalValueWallet: number = 0;
-  receita: number = 1000.0;
-  despesa: number = 500.00;
-  saldo: number = 0.0;
+  receita: number = 0;
+  despesa: number = 0;
+  saldo: number = 0;
+  controleTamanho: number = 0;
 
-
-  constructor(public database: DatabaseService) {
-  }
+  constructor(public database: DatabaseService) {}
 
   ngOnInit() {
     this.getAcoes();
@@ -31,10 +29,30 @@ export class HomePage implements OnInit {
   }
 
   calculaSaldo() {
-    this.saldo = Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
-    this.acoesCarteira.forEach(acao => {
-      this.saldo = Number(this.saldo.toFixed(2)) + Number(acao.actualValue.toFixed(2))
-    });
+    console.log('console calculaSaldo');
+    if (this.database.carteiraExtrato.length > this.controleTamanho) {
+      this.saldo = 0;
+      this.receita = 0;
+      this.despesa = 0;
+      Number(
+        this.database.carteiraExtrato.map((element, index) => {
+          if (element.type) {
+            this.receita += element.value;
+          } else {
+            this.despesa += element.value;
+          }
+        })
+      );
+
+      this.saldo =
+        Number(this.receita.toFixed(2)) - Number(this.despesa.toFixed(2));
+      this.acoesCarteira.forEach((acao) => {
+        this.saldo =
+          Number(this.saldo.toFixed(2)) + Number(acao.actualValue.toFixed(2));
+      });
+
+      this.controleTamanho = this.database.carteiraExtrato.length;
+    }
   }
 
   // novos métodos
@@ -48,6 +66,4 @@ export class HomePage implements OnInit {
     this.database.getTotalValue();
     this.totalValueWallet = this.database.totalValueWallet;
   }
-
-
 }
